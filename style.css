@@ -733,3 +733,689 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
         display: none; /* Прячем обычное меню и кнопку в хедере на мобилках */
     }
 }
+/* --- Стили для Юридических и Контактных страниц --- */
+
+.legal-page {
+    padding: 160px 0 100px; /* Отступ под фиксированный хедер */
+    background: var(--bg-color);
+    min-height: 80vh;
+}
+
+.section-tag {
+    display: inline-block;
+    color: var(--primary);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+}
+
+.legal-page h1 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: 30px;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.lead-text {
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    max-width: 800px;
+    line-height: 1.7;
+    margin-bottom: 60px;
+}
+
+/* Сетка карточек */
+.contact-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.contact-card {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition);
+}
+
+.contact-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.contact-card__icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(0, 242, 234, 0.1);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    color: var(--primary);
+}
+
+.contact-card__icon i {
+    width: 30px;
+    height: 30px;
+}
+
+.contact-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.contact-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.contact-link {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary);
+    word-break: break-all;
+}
+
+.contact-link:hover {
+    text-shadow: 0 0 10px rgba(0, 242, 234, 0.5);
+}
+
+.contact-address {
+    font-style: normal;
+    color: var(--text-main);
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+/* Дополнительный текст */
+.contact-extra {
+    padding: 30px;
+    border-left: 3px solid var(--primary);
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 0 12px 12px 0;
+    color: var(--text-muted);
+}
+
+.inline-link {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .legal-page { padding-top: 120px; }
+    .contact-cards { grid-template-columns: 1fr; }
+}
+/* --- Стили для контента юридических страниц --- */
+
+.legal-content {
+    color: var(--text-muted);
+    line-height: 1.8;
+}
+
+.legal-block {
+    margin-bottom: 50px;
+}
+
+.legal-block h2 {
+    color: var(--text-main);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.legal-block strong {
+    color: var(--primary);
+}
+
+/* Список с кастомными маркерами */
+.legal-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.legal-list li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+}
+
+.legal-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 12px;
+    height: 2px;
+    background: var(--primary);
+    box-shadow: 0 0 10px var(--primary);
+}
+
+/* Сетка типов Cookie */
+.cookie-types-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.cookie-type-item {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cookie-type-item i {
+    color: var(--primary);
+    width: 24px;
+    height: 24px;
+}
+
+.cookie-type-item strong {
+    display: block;
+    font-size: 1.1rem;
+}
+
+.cookie-type-item span {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* Блок контактов внизу страницы */
+.contact-info-block {
+    background: linear-gradient(135deg, rgba(0, 242, 234, 0.05) 0%, rgba(18, 18, 18, 1) 100%);
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid rgba(0, 242, 234, 0.2);
+    margin-top: 80px;
+}
+
+.contact-data-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 25px;
+}
+
+.contact-data-list li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.contact-data-list i {
+    color: var(--primary);
+    width: 20px;
+}
+
+.contact-data-list a:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .contact-info-block { padding: 25px; }
+}
+/* --- Специфические стили для Дисклеймера --- */
+
+.legal-header {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+.warning-icon-wrapper {
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 184, 0, 0.1); /* Мягкий золотистый/предупреждающий цвет */
+    border: 1px solid rgba(255, 184, 0, 0.3);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.warning-icon {
+    width: 35px;
+    height: 35px;
+    color: #ffb800; /* Цвет предупреждения */
+}
+
+/* Блок предупреждения о рисках */
+.risk-warning {
+    margin: 40px 0;
+    padding: 2px;
+    background: linear-gradient(90deg, var(--primary), transparent);
+    border-radius: 16px;
+}
+
+.risk-inner {
+    background: #1a1a1a;
+    padding: 30px;
+    border-radius: 14px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.risk-inner i {
+    color: var(--primary);
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+
+.risk-inner p {
+    margin-bottom: 0;
+    font-size: 1rem;
+    color: var(--text-main);
+}
+
+/* Блок подтверждения */
+.agreement {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.agreement strong {
+    color: var(--primary);
+}
+
+/* Адаптивность для заголовка */
+@media (max-width: 768px) {
+    .legal-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .risk-inner {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+/* --- Специфические стили для Политики Данных --- */
+
+.terminology-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.terminology-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+}
+
+.terminology-list li i {
+    color: var(--primary);
+    width: 20px;
+    flex-shrink: 0;
+    margin-top: 3px;
+}
+
+/* Сетка данных */
+.data-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.data-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 25px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.data-item__icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 242, 234, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+}
+
+.data-item__content strong {
+    display: block;
+    color: var(--text-main);
+    margin-bottom: 5px;
+}
+
+.data-item__content span {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* Почтовый блок внизу */
+.policy-mail-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+    padding: 15px 25px;
+    background: var(--primary);
+    border-radius: 100px;
+    transition: var(--transition);
+}
+
+.policy-mail-box i {
+    color: var(--bg-color);
+    width: 20px;
+}
+
+.policy-mail {
+    color: var(--bg-color);
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.policy-mail-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0, 242, 234, 0.4);
+}
+
+@media (max-width: 600px) {
+    .data-item { flex-direction: column; text-align: center; }
+}
+/* --- Специфические стили для Политики Конфиденциальности --- */
+
+.policy-hero-card {
+    background: linear-gradient(135deg, rgba(0, 242, 234, 0.1) 0%, rgba(30, 30, 30, 1) 100%);
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid rgba(0, 242, 234, 0.2);
+    margin-bottom: 40px;
+}
+
+.policy-notice {
+    display: flex;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 25px;
+    border-radius: 16px;
+    margin-bottom: 50px;
+    border-left: 4px solid var(--primary);
+}
+
+.policy-notice i {
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+/* Инфографика хранения */
+.storage-info {
+    display: flex;
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.storage-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: var(--card-bg);
+    padding: 15px 25px;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.storage-icon {
+    color: var(--primary);
+    display: flex;
+}
+
+/* Сетка сбора данных */
+.data-collection-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 50px 0;
+}
+
+.data-box {
+    background: var(--card-bg);
+    padding: 35px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.data-box h3 {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    color: var(--primary);
+}
+
+/* Финальный блок прав */
+.rights-block {
+    margin-top: 80px;
+    text-align: center;
+    padding: 60px 40px;
+    background: #000;
+    border-radius: 30px;
+    border: 1px solid var(--primary);
+    box-shadow: 0 0 40px rgba(0, 242, 234, 0.1);
+}
+
+.rights-block h2 {
+    margin-bottom: 20px;
+}
+
+.contact-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 16px 40px;
+    background: var(--primary);
+    color: var(--bg-color);
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: var(--transition);
+}
+
+.contact-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 242, 234, 0.4);
+}
+
+@media (max-width: 768px) {
+    .data-collection-grid { grid-template-columns: 1fr; }
+    .storage-info { flex-direction: column; gap: 15px; }
+}
+/* --- Стили для Политики Возврата --- */
+
+.refund-accent {
+    border-left: 4px solid var(--primary);
+    background: linear-gradient(90deg, rgba(0, 242, 234, 0.05) 0%, transparent 100%);
+}
+
+.refund-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin: 40px 0 60px;
+}
+
+.refund-card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition);
+}
+
+.refund-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-5px);
+}
+
+.refund-card i {
+    color: var(--primary);
+    width: 30px;
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+.refund-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    color: var(--text-main);
+}
+
+.refund-card p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Мини-шаги */
+.steps-mini {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.step-mini {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 15px 20px;
+    border-radius: 12px;
+    font-size: 1rem;
+}
+
+.step-num {
+    width: 32px;
+    height: 32px;
+    background: var(--primary);
+    color: var(--bg-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* Предупреждения */
+.refund-warning {
+    background: rgba(255, 75, 75, 0.05);
+    border: 1px solid rgba(255, 75, 75, 0.2);
+    padding: 35px;
+    border-radius: 24px;
+}
+
+.refund-warning h2 {
+    color: #ff4b4b; /* Мягкий красный для ограничений */
+}
+
+@media (max-width: 600px) {
+    .step-mini { flex-direction: column; align-items: flex-start; }
+}
+/* --- Специфические стили для Условий Использования --- */
+
+.terms-accent {
+    border-left: 4px solid var(--primary);
+    background: linear-gradient(90deg, rgba(0, 242, 234, 0.05) 0%, transparent 100%);
+}
+
+/* Карточка интеллектуальной собственности */
+.intellectual-property {
+    margin: 60px 0;
+}
+
+.property-card {
+    display: flex;
+    gap: 30px;
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    align-items: center;
+}
+
+.property-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(0, 242, 234, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.property-icon i {
+    width: 35px;
+    height: 35px;
+    color: var(--primary);
+}
+
+.property-text h2 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+/* Блок "As is" */
+.as-is-warning {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 25px;
+    border-radius: 16px;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.as-is-warning i {
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+.as-is-warning p {
+    margin-bottom: 0;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .property-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .as-is-warning {
+        flex-direction: column;
+        text-align: center;
+    }
+}
