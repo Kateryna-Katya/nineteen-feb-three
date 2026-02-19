@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $domainTitle ?> | Технологии нового поколения</title>
     
-    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='none' stroke='%2300f2ea' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%2300f2ea'/%3E%3Cpath d='M16 2 L16 6 M16 26 L16 30 M2 16 L6 16 M26 16 L30 16' stroke='%2300f2ea' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -265,47 +265,36 @@
                 <div class="contact__grid">
                     <div class="contact__info" data-aos="fade-right">
                         <h2 class="section-title">Запросить <span class="text-gradient">доступ</span></h2>
-                        <p class="contact__text">Бесплатная консультация по всем вопросам и экспертная поддержка на всех этапах. Начните сейчас — подключение занимает 2 минуты.</p>
-                        
-                        <div class="contact__details">
-                            <div class="contact__detail-item">
-                                <i data-lucide="check-circle"></i>
-                                <span>Проверенный партнер в Великобритании</span>
-                            </div>
-                            <div class="contact__detail-item">
-                                <i data-lucide="check-circle"></i>
-                                <span>Методологии, доказавшие эффективность</span>
-                            </div>
-                        </div>
+                        <p class="contact__text">Бесплатная консультация по всем вопросам. Подключение занимает 2 минуты.</p>
                     </div>
         
                     <div class="contact__form-wrapper" data-aos="fade-left">
                         <form id="mainContactForm" class="contact__form">
                             <div class="form__group">
-                                <input type="text" name="name" placeholder="Ваше имя" required>
+                                <input type="text" id="userName" name="name" placeholder="Ваше имя" required>
                             </div>
                             <div class="form__group">
-                                <input type="email" name="email" placeholder="Email" required>
+                                <input type="email" id="userEmail" name="email" placeholder="Email" required>
                             </div>
                             <div class="form__group">
                                 <input type="tel" id="phoneInput" name="phone" placeholder="Телефон (только цифры)" required>
                             </div>
                             
                             <div class="form__captcha">
-                                <label for="captcha">Сколько будет <span id="captchaQuestion"></span>?</label>
+                                <label for="captchaInput">Сколько будет <span id="captchaQuestion"></span>?</label>
                                 <input type="number" id="captchaInput" placeholder="Ответ" required>
                             </div>
         
                             <div class="form__checkbox">
                                 <input type="checkbox" id="consent" required>
-                                <label for="consent">Я согласен с <a href="./personal-data-policy.php">политикой обработки данных</a></label>
+                                <label for="consent">Я согласен с <a href="./personal-data-policy.php">политикой данных</a></label>
                             </div>
         
                             <button type="submit" class="btn btn--primary btn--full">Начать сейчас</button>
                             
                             <div id="formSuccess" class="form-message success" style="display: none;">
                                 <i data-lucide="party-popper"></i>
-                                <span>Запрос отправлен! Мы свяжемся с вами в ближайшее время.</span>
+                                <span>Запрос отправлен!</span>
                             </div>
                         </form>
                     </div>

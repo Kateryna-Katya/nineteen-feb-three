@@ -1,27 +1,55 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Инициализация иконок Lucide
-    lucide.createIcons();
+    
+    // --- 1. ИНИЦИАЛИЗАЦИЯ ИКОНОК ---
+    if (typeof lucide !== 'undefined') lucide.createIcons();
 
-    // 2. Инициализация AOS (с CDN)
-    if (typeof AOS !== 'undefined') {
-        AOS.init({ duration: 800, offset: 100, once: true });
-    }
+    // --- 2. ХЕДЕР (СКРОЛЛ) ---
+    const header = document.querySelector('.header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            header.style.padding = '12px 0';
+            header.style.background = 'rgba(18, 18, 18, 0.95)';
+        } else {
+            header.style.padding = '20px 0';
+            header.style.background = 'rgba(18, 18, 18, 0.8)';
+        }
+    });
 
-    // 3. Мобильное меню
+    // --- 3. МОБИЛЬНОЕ МЕНЮ ---
     const burger = document.querySelector('.burger');
     const mobileMenu = document.getElementById('mobileMenu');
     const menuLinks = document.querySelectorAll('.mobile-menu__list a');
 
-    const toggleMenu = () => {
-        burger.classList.toggle('burger--active');
-        mobileMenu.classList.toggle('mobile-menu--active');
-        document.body.style.overflow = mobileMenu.classList.contains('mobile-menu--active') ? 'hidden' : '';
+    if (burger && mobileMenu) {
+        burger.addEventListener('click', () => {
+            burger.classList.toggle('burger--active');
+            mobileMenu.classList.toggle('mobile-menu--active');
+            document.body.style.overflow = mobileMenu.classList.contains('mobile-menu--active') ? 'hidden' : '';
+        });
+
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                burger.classList.remove('burger--active');
+                mobileMenu.classList.remove('mobile-menu--active');
+                document.body.style.overflow = '';
+            });
+        });
+    }
+
+    // --- 4. ПОДКЛЮЧЕНИЕ AOS ЧЕРЕЗ СКРИПТ ---
+    const aosScript = document.createElement('script');
+    aosScript.src = "https://unpkg.com/aos@next/dist/aos.js";
+    aosScript.onload = () => {
+        AOS.init({
+            duration: 800,
+            offset: 100,
+            once: true,
+            easing: 'ease-out-cubic'
+        });
     };
+    document.head.appendChild(aosScript);
 
-    burger.addEventListener('click', toggleMenu);
-    menuLinks.forEach(link => link.addEventListener('click', toggleMenu));
-
-    // 4. Hero Tilt Effect (Ванильный JS)
+    // --- 5. TILT ЭФФЕКТ (HERO) ---
     const scene = document.querySelector('#scene');
     if (scene) {
         window.addEventListener('mousemove', (e) => {
@@ -31,67 +59,67 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 5. Аккордеон FAQ
-    document.querySelectorAll('.accordion__trigger').forEach(trigger => {
-        trigger.addEventListener('click', () => {
-            const item = trigger.parentElement;
-            const isActive = item.classList.contains('active');
-            document.querySelectorAll('.accordion__item').forEach(i => i.classList.remove('active'));
-            if (!isActive) item.classList.add('active');
-        });
+    // --- 6. АККОРДЕОН (FAQ) ---
+    const accordionItems = document.querySelectorAll('.accordion__item');
+    accordionItems.forEach(item => {
+        const trigger = item.querySelector('.accordion__trigger');
+        if (trigger) {
+            trigger.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                accordionItems.forEach(otherItem => otherItem.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        }
     });
 
-    // 6. Контактная форма: Валидация и Математическая капча
-    const form = document.getElementById('mainContactForm');
-    const phoneInput = document.getElementById('phoneInput');
-    const captchaText = document.getElementById('captchaQuestion');
+    // --- 7. ФОРМА И КАПЧА ---
+    const contactForm = document.getElementById('mainContactForm');
+    const captchaLabel = document.getElementById('captchaQuestion');
     const captchaInput = document.getElementById('captchaInput');
-    
-    // Генерация капчи
-    let num1 = Math.floor(Math.random() * 10) + 1;
-    let num2 = Math.floor(Math.random() * 10) + 1;
-    let captchaSum = num1 + num2;
-    if(captchaText) captchaText.innerText = `${num1} + ${num2}`;
+    const phoneInput = document.getElementById('phoneInput');
 
-    // Только цифры для телефона
-    phoneInput.addEventListener('input', (e) => {
-        e.target.value = e.target.value.replace(/[^\d]/g, '');
-    });
+    if (contactForm && captchaLabel) {
+        let n1 = Math.floor(Math.random() * 10) + 1;
+        let n2 = Math.floor(Math.random() * 10) + 1;
+        let result = n1 + n2;
+        captchaLabel.innerText = `${n1} + ${n2}`;
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        if (parseInt(captchaInput.value) !== captchaSum) {
-            alert('Неправильный ответ на капчу!');
-            return;
+        if (phoneInput) {
+            phoneInput.addEventListener('input', (e) => {
+                e.target.value = e.target.value.replace(/[^\d]/g, '');
+            });
         }
 
-        // Имитация AJAX
-        const btn = form.querySelector('button');
-        btn.innerText = 'Отправка...';
-        btn.disabled = true;
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (parseInt(captchaInput.value) !== result) {
+                alert('Капча решена неверно!');
+                return;
+            }
+            
+            const btn = contactForm.querySelector('button');
+            btn.disabled = true;
+            btn.innerText = 'Отправка...';
 
-        setTimeout(() => {
-            form.reset();
-            btn.style.display = 'none';
-            document.getElementById('formSuccess').style.display = 'flex';
-            lucide.createIcons(); // Обновляем иконку в сообщении
-        }, 1500);
-    });
-
-    // 7. Cookie Popup
-    const cookiePopup = document.getElementById('cookiePopup');
-    const acceptBtn = document.getElementById('acceptCookies');
-
-    if (!localStorage.getItem('cookiesAccepted')) {
-        setTimeout(() => {
-            cookiePopup.classList.add('cookie-popup--show');
-        }, 2000);
+            setTimeout(() => {
+                contactForm.reset();
+                btn.style.display = 'none';
+                document.getElementById('formSuccess').style.display = 'flex';
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+            }, 1500);
+        });
     }
 
-    acceptBtn.addEventListener('click', () => {
-        localStorage.setItem('cookiesAccepted', 'true');
-        cookiePopup.classList.remove('cookie-popup--show');
-        setTimeout(() => cookiePopup.style.display = 'none', 500);
-    });
+    // --- 8. КУКИ ---
+    const cookieBox = document.getElementById('cookiePopup');
+    const cookieBtn = document.getElementById('acceptCookies');
+    if (cookieBox && !localStorage.getItem('nineteen_cookies')) {
+        setTimeout(() => cookieBox.classList.add('cookie-popup--show'), 2000);
+    }
+    if (cookieBtn) {
+        cookieBtn.addEventListener('click', () => {
+            localStorage.setItem('nineteen_cookies', 'true');
+            cookieBox.classList.remove('cookie-popup--show');
+        });
+    }
 });

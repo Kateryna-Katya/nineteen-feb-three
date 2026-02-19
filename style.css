@@ -689,3 +689,47 @@ a { text-decoration: none; color: inherit; transition: var(--transition); }
 
 @media (max-width: 992px) { .contact__grid { grid-template-columns: 1fr; } }
 @media (max-width: 600px) { .cookie-popup__content { flex-direction: column; text-align: center; } }
+/* --- СТИЛИ ДЛЯ ДЕСКТОПА (от 993px и выше) --- */
+
+.burger {
+    display: none; /* Прячем бургер на больших экранах */
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 1001;
+    width: 30px;
+    height: 20px;
+}
+
+/* Линии бургера */
+.burger span, .burger::before, .burger::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary);
+    transition: 0.3s;
+}
+.burger::before { top: 0; }
+.burger span { top: 9px; }
+.burger::after { bottom: 0; }
+
+/* Состояние при открытом меню */
+.burger--active span { opacity: 0; }
+.burger--active::before { transform: rotate(45deg); top: 9px; }
+.burger--active::after { transform: rotate(-45deg); bottom: 9px; }
+
+/* --- МОБИЛЬНЫЕ СТИЛИ (до 992px) --- */
+
+@media (max-width: 992px) {
+    .burger {
+        display: block; /* Показываем бургер только здесь */
+    }
+
+    .header__nav, 
+    .header__btn {
+        display: none; /* Прячем обычное меню и кнопку в хедере на мобилках */
+    }
+}
